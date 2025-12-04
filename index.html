@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42 School Projects - Mansoor Abdullah Almarzooqi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Author Section */
+        .author-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .author-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: photoReveal 1.5s ease-out;
+        }
+
+        @keyframes photoReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+               object-fit: cover;
+        }
+
+        .author-photo:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .author-label {
+            font-size: 14px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .author-name {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .author-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .author-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .author-badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge-purple {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .badge-pink {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .badge-blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card.philosophers {
+            border-color: #667eea;
+        }
+
+        .project-card.minishell {
+            border-color: #1e3c72;
+        }
+
+        .project-icon {
+            font-size: 70px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .project-title {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .project-title.philosophers {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-title.minishell {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .tag.purple {
+            background: #667eea;
+        }
+
+        .tag.purple-dark {
+            background: #764ba2;
+        }
+
+        .tag.green {
+            background: #2ecc71;
+        }
+
+        .tag.blue {
+            background: #1e3c72;
+        }
+
+        .tag.blue-mid {
+            background: #2a5298;
+        }
+
+        .tag.blue-light {
+            background: #3b5998;
+        }
+
+        .project-features {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .features-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .features-list {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+        }
+
+        .project-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .project-button.philosophers {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .project-button.philosophers:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .project-button.minishell {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        .project-button.minishell:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.5);
+        }
+
+        /* Why Section */
+        .why-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .why-title {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .why-item-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .why-item-text {
+            font-size: 15px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            color: #666;
+            font-size: 15px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer strong {
+            color: #667eea;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #764ba2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .author-name {
+                font-size: 26px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Author Section -->
+        <div class="author-section">
+            <div class="author-photo">
+                <img src="image/mansoor.png" alt="Mansoor Abdullah Almarzooqi">
+            </div>
+            <div class="author-label">CREATED BY</div>
+            <div class="author-name">Mansoor Abdullah Almarzooqi</div>
+            <div class="author-title">42 School Student & Developer</div>
+            <div class="author-description">
+                This comprehensive educational platform was meticulously developed to help <strong>42 School
+                    students</strong> master complex programming concepts. Through interactive visualization and
+                step-by-step code analysis, these tools transform difficult topics into intuitive, hands-on learning
+                experiences. Designed with a deep understanding of the challenges students face in grasping concurrency,
+                shell programming, and system-level concepts.
+            </div>
+            <div class="author-badges">
+                <span class="badge badge-purple">42 School Project</span>
+                <span class="badge badge-pink">Educational Technology</span>
+                <span class="badge badge-blue">Open Source</span>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="projects-section">
+            <h2 class="section-title">🎓 My 42 School Educational Projects</h2>
+            <p class="section-subtitle">Interactive tools designed to help students master complex concepts</p>
+
+            <div class="projects-grid">
+                <!-- Dining Philosophers -->
+                <div class="project-card philosophers">
+                    <div class="project-icon">🍽️</div>
+                    <h3 class="project-title philosophers">Dining Philosophers</h3>
+                    <p class="project-description">
+                        Interactive visualization of the classic concurrency problem. Master thread synchronization,
+                        mutex locks, and deadlock prevention.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag purple">Concurrency</span>
+                        <span class="tag purple-dark">Mutex Locks</span>
+                        <span class="tag green">Threading</span>
+                    </div>
+                    <div class="project-features">
+                        <div class="features-title">✨ Features:</div>
+                        <div class="features-list">
+                            • 20-step code walkthrough<br>
+                            • Real-time process monitor<br>
+                            • 3 layout modes + zoom controls<br>
+                            • Keyboard shortcuts<br>
+                            • Stable layout (no jumping!)
+                        </div>
+                    </div>
+                    <a href="fork_locking_animated.html" class="project-button philosophers">
+                        🚀 Launch Interactive Demo
+                    </a>
+                </div>
+
+                <!-- Minishell Interactive -->
+                <div class="project-card minishell">
+                    <div class="project-icon">🐚</div>
+                    <h3 class="project-title minishell">Minishell Interactive</h3>
+                    <p class="project-description">
+                        Visual step-by-step shell execution flow. Understand command parsing, tokenization, and process
+                        management.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag blue">Shell</span>
+                        <span class="tag blue-mid">Parsing</span>
+                        <span class="tag blue-light">Processes</span>
+                    </div>
+                    <div class="project-features">
+                        <div class="features-title">✨ Features:</div>
+                        <div class="features-list">
+                            • Flow chart visualization<br>
+                            • Command parser & tokenizer<br>
+                            • Error simulator<br>
+                            • Code viewer with highlighting<br>
+                            • Interactive execution steps
+                        </div>
+                    </div>
+                    <a href="https://minishell-wfui5zjz.manus.space/" target="_blank" class="project-button minishell">
+                        🚀 Launch Interactive App
+                    </a>
+                </div>
+            </div>
+
+            <!-- Why These Projects Matter -->
+            <div class="why-section">
+                <h3 class="why-title">🎯 Why These Projects Matter</h3>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <div class="why-icon">📚</div>
+                        <div class="why-item-title">Learn by Doing</div>
+                        <div class="why-item-text">
+                            Interactive visualizations make complex concepts easy to understand through hands-on
+                            exploration
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">🤝</div>
+                        <div class="why-item-title">Help Students</div>
+                        <div class="why-item-text">
+                            Created by a 42 School student for students, addressing real learning challenges
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">🚀</div>
+                        <div class="why-item-title">Open Source</div>
+                        <div class="why-item-text">
+                            Free educational resources available to everyone in the programming community
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <strong>Perfect for:</strong> 42 School Students, Computer Science Learners, Shell Programming
+                Enthusiasts
+            </p>
+            <p style="margin-top: 15px;">
+                Created with ❤️ by <strong>Mansoor Abdullah Almarzooqi</strong> for interactive learning
+            </p>
+            <p style="margin-top: 10px; font-size: 13px;">
+                <a href="https://github.com" target="_blank">GitHub</a> |
+                <a href="#"
+                    onclick="alert('42 School Educational Projects\n\nCreated by: Mansoor Abdullah Almarzooqi\n\n🍽️ Dining Philosophers - Master concurrency concepts\n🐚 Minishell Interactive - Visualize shell execution\n\nHelping students learn through interactive visualization.'); return false;">About</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
